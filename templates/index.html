@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+
+<html>
+    <head>
+        <title>Wikipedia Word Analytics</title>
+    </head>
+    <body>
+        {% if url %}
+        <h1>Word Frequency for URL: {{ url }}</h1>
+        {% endif%}
+        <canvas id="chart" width="1000" height="500"></canvas>
+
+        <form action="{{ url_for('form_submit') }}" method="POST">
+            <label for="url">Wikipedia URL</label>
+            <input type="text" name="url"/>
+            <button type="submit" >Submit</button>
+        </form>
+    </body>
+
+    <script src="/static/Chart.js"></script>
+{% if labels %}
+    <script>
+    var context = document.getElementById("chart").getContext("2d");
+
+    var data = {
+        labels : {{ labels|safe }},
+        datasets : [
+            {
+                fillColor : "black",
+                strokeColor : "black",
+                pointColor : "black",
+                pointStrokeColor : "#fff",
+                data : {{ values|safe }}
+            } ]
+    };
+
+    var options = {
+        scaleBeginAtZero : true,
+        scaleIntegersOnly: true
+    };
+
+    var chart = new Chart(context).Bar(data, options);
+    </script>
+{% endif %}
+
+</html>
