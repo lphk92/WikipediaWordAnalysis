@@ -12,8 +12,3 @@ def get_common_words(url,N=100) :
 	words = re.findall(ur'\w+',raw,re.UNICODE)
 	freqs = Counter(words)
 	return dict(freqs.most_common(N))
-
-
-
-
-

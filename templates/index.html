@@ -8,7 +8,7 @@
         {% if url %}
         <h1>Word Frequency for URL: {{ url }}</h1>
         {% endif%}
-        <canvas id="chart" width="1000" height="500"></canvas>
+        <canvas id="chart" width="1200" height="500"></canvas>
 
         <form action="{{ url_for('form_submit') }}" method="POST">
             <label for="url">Wikipedia URL</label>
@@ -34,12 +34,7 @@
             } ]
     };
 
-    var options = {
-        scaleBeginAtZero : true,
-        scaleIntegersOnly: true
-    };
-
-    var chart = new Chart(context).Bar(data, options);
+    var chart = new Chart(context).Bar(data);
     </script>
 {% endif %}
 
