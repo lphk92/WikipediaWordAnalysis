@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+
+<html>
+    <head>
+        <title>Wikipedia Word Analytics</title>
+    </head>
+{% if labels %}
+    <script>
+    var context = document.getElementById("chart").getContext("2d");
+
+    var data = {
+        labels : {{ labels }},
+        datasets : [
+            {
+                fillColor : "black",
+                strokeColor : "black",
+                pointColor : "black",
+                pointStrokeColor : "#fff",
+                data : {{ values }}
+            } ]
+    };
+
+    var chart = new Chart(context).Bar(data);
+    </script>
+{% endif %}
+    <body>
+        <canvas id="chart" width="500" height="500"></canvas>
+
+    </body>
+</html>
