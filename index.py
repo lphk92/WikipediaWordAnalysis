@@ -17,7 +17,7 @@ def form_submit():
     url = request.form["url"]
     data = get_common_words(url)
     labels, values = zip(*sorted(data.items(), key=lambda x: x[1]))
-    labels = [str(s).lower() for s in labels]
+    labels = [repr(s)[2:-1].lower() for s in labels]
     print "Got Data!"
     print labels
     print values

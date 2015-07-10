@@ -23,7 +23,7 @@
     var context = document.getElementById("chart").getContext("2d");
 
     var data = {
-        labels : {{ labels|safe }},
+        labels : [{% for l in labels %}'{{l}}',{% endfor %}],
         datasets : [
             {
                 fillColor : "black",
