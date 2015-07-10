@@ -16,13 +16,15 @@ def index():
 def form_submit():
     url = request.form["url"]
     data = get_common_words(url)
-    data = {str(k): data[k] for k in data}
+    labels, values = zip(*sorted(data.items(), key=lambda x: x[1]))
+    labels = [str(s).lower() for s in labels]
     print "Got Data!"
-    print data
+    print labels
+    print values
     return render_template("index.html",
                            url=url,
-                           labels=data.keys(),
-                           values=data.values())
+                           labels=list(labels),
+                           values=list(values))
 
 if __name__ == "__main__":
    app.run()
