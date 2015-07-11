@@ -1,11 +1,12 @@
-from flask import Flask, render_template, request, url_for
-
+import os
+from datetime import datetime
+from flask import Flask, request, flash, url_for, redirect, \
+     render_template, abort, send_from_directory
 from getwords import get_common_words
 
 app = Flask(__name__)
+app.config.from_pyfile('flaskapp.cfg')
 
-#def get_word_data(url):
-    #return {"a": 100, "the": 125}
 
 @app.route("/")
 def index():
